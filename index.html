@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="disks">
+<head>
+    <meta charset="UTF-8">
+    <title>Disks</title>
+</head>
+<body>
+    <div ng-controller="DiskController as diskCtrl">
+        <h2>Directive</h2>
+        <disk-directive></disk-directive>
+        <hr>
+        <h2>JSON</h2>
+        {{diskCtrl.disks | json}}
+        <hr>
+        <h2>List</h2>
+        <ul>
+            <li ng-repeat="disk in diskCtrl.disks">
+                <input type="text" ng-model="disk.name">
+            </li>
+        </ul>
+    </div>
+    <hr><hr>
+    <div ng-controller="DiskEditController as diskEditCtrl">
+        <h2>List Form</h2>
+        <ul>
+            <li ng-repeat="disk in diskEditCtrl.disks">
+                <input type="text" ng-model="disk.name"><button ng-click="diskEditCtrl.deleteDisk($index)">x</button>
+            </li>
+        </ul>
+        <h2>Add Disk</h2>
+        <button ng-click="diskEditCtrl.addDisk()">Add Disk</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="disk.js"></script>
+</body>
+</html>
